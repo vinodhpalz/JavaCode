@@ -3,9 +3,11 @@ import java.util.Date;
 class SerializeDate
 {
 	Date d;
+	transient Date d1;
 	public SerializeDate()
 	{
 		d = new Date();	
+		d1 = new Date();
 	}
 	public void performSr()
 	{
