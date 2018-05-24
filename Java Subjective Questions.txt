@@ -1,0 +1,42 @@
+1.Write a Program to find the Factorial of a given Number. *
+Your answer
+
+2.Write a Program to find the biggest and smallest number between five given numbers. [Hint : Using Array and Scanner concept] *
+Your answer
+
+3.Write a Program to find the number of words with in a given string. [Use the logic instead of Built in functions] *
+Your answer
+
+4.What is Compile time Polymorphism? Explain with a proper example using a class.[ Hint : You need to write proper definition,syntax and create a class to implement it] *
+Your answer
+
+5. What is an ArrayList? Explain with a Proper Example. [Hint You need to write a class and use functions of ArrayList and traverse the list]. *
+
+
+1.Write a program to check whether a given number is prime. *
+Your answer
+
+2.Write a program to search whether given numbers is present or not using linear search. *
+Your answer
+
+3.Write a program to compare two Strings. [Hint: Please use the logic instead of built in function]. *
+Your answer
+
+4.What is runtime polymorphism. Explain with proper example by writing a class. *
+Your answer
+
+5.What is HashSet? Explain with an example. *
+
+1.Write a program to check whether the given number is Armstrong number or not.[Hint : 153=1^3+5^3+3^3] *
+Your answer
+
+2.Write a program to insert a number at the given position in an array of five elements. *
+Your answer
+
+3.Write a program to find whether a give string is palindrome.[Hint : Please use logic instead of built in function] *
+Your answer
+
+4.What is inheritance? Explain with proper example by writing a class. *
+Your answer
+
+5.What is HashMap? Explain with an Example. *
