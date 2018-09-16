@@ -1,0 +1,230 @@
+Step 1: Create a maven project and choose the maven web project and give the group id and artifact id for your project.
+
+Step 2: Add the web server to the project - right click the project and select properties -> select targeted runtimes and choose the server and click ok.
+
+Step 3: Add a folder named "java" inside the folder src->main. Delete index.jsp file from your project.
+
+step 4: Add the spring framework into the project by adding its depencies inside pom.xml
+
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-core</artifactId>
+    <version>5.0.8.RELEASE</version>
+</dependency>  
+    
+    <dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-web</artifactId>
+    <version>5.0.8.RELEASE</version>
+</dependency>
+
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-webmvc</artifactId>
+    <version>5.0.8.RELEASE</version>
+</dependency>
+
+step 5: create a file named spring-config.xml, root-context.xml, web.xml inside the path src/main/webapp/WEB-INF
+
+spring-config.xml
+-----------------
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+	
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<annotation-driven />
+
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<resources mapping="/resources/**" location="/resources/" />
+	
+	
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/views/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+	
+	<context:component-scan base-package="controller" />
+	
+</beans:beans>
+
+root-context.xml
+----------------
+
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+		
+</beans>
+
+web.xml
+-------
+
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/root-context.xml</param-value>
+	</context-param>
+	
+	<!-- Creates the Spring Container shared by all Servlets and Filters -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<!-- Processes application requests -->
+	<servlet>
+		<servlet-name>appServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring-config.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+		
+	<servlet-mapping>
+		<servlet-name>appServlet</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+</web-app>
+
+Step 6: 
+
+create a folder called a "views" inside the webapp folder which is inside the src->main folder. This is required to add all the .jsp files while working with spring framwork.
+
+Step 7:
+
+Create 2 views (.jsp) inside the views folder. Name the view as product.jsp and success.jsp. right click the view folder and create the jsp files.
+
+Step 8:
+
+create a form tag in product.jsp and add 2 fields.
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+<form action="/SpringProduct/success" method="post">
+
+Product Name: <input type="text" name="pname"/>
+Product Cost: <input type="text" name="pcost"/>
+
+<input type="submit" value="Product Insert"/>
+</form>
+
+</body>
+</html>
+
+Step 9: Create a model class with the name Product inside model package.
+package model;
+
+public class Product {
+
+	private String pName;
+	private int pCost;
+	public Product() {
+		
+	}
+	public Product(String pName, int pCost) {
+		this.pName = pName;
+		this.pCost = pCost;
+	}
+	public String getpName() {
+		return pName;
+	}
+	public void setpName(String pName) {
+		this.pName = pName;
+	}
+	public int getpCost() {
+		return pCost;
+	}
+	public void setpCost(int pCost) {
+		this.pCost = pCost;
+	}
+}
+
+Step 10: Create a ProductController with below code
+
+package controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
+import model.Product;
+
+@Controller
+public class ProductController {
+
+	@RequestMapping(value="/",method=RequestMethod.GET)
+	public String productsPage() {
+		return "product";
+	}
+	
+	@RequestMapping(value="/success", method=RequestMethod.POST)
+	public ModelAndView productSuccess(@ModelAttribute("product1") Product product) {
+		
+		ModelAndView view = new ModelAndView("success");
+		return view;
+	}
+	
+}
+
+Step 11:
+ Add the below in success.jsp
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<h1> Success ${product1.getpName() }</h1>
+</body>
+</html>
+
+Step 12: Run your spring Project, start the wildfly server in debug mode.
+right click your project and choose debug and select debug in server.
+
+Step 13: When ever you make a change in your code later, right click the project from the server and do a full publish and then debug the project in server.
+
+
+
+
+
+
+
+
+
+
+
+
+
