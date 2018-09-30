@@ -1,0 +1,238 @@
+1. Core Java and JDBC
+
+
+Recap:
+
+
+1. JVM, JDK, features of Java - Open Source, Platform Independent, Object Oriented, Secured.
+2. Flow Control - Conditional Construts(If, If-else if, switch) and Looping Constructs (for, while, do while).
+3. break, continue
+4. Operators
+5. Packages - package keyword, import
+6. Arrays - one dimensional and multi dimentional array
+An array is an object which contains collection of elements of similar data type. Size of an array is fixed.
+7. OOPS - Abstraction and Encapsulation, Inheritance, Polymorphism
+
+Abstration - Providing relavent information about an Object
+Encapsulation - Wrapping data into a single unit / Hiding data
+
+class Employee
+{
+	private int empId;
+	private String empName;
+
+	public void setEmpId(int empId)
+	{
+		this.empId = empId;	
+	}
+	public int getEmpId()
+	{
+		return empId;		
+	}		
+}
+
+Inheritance - Inherting the attributes and methods of base class into derived class.
+Inheritance provides reusability of code.
+Inheritance is done with the keyword extends
+
+
+class Manager extends Employee
+{
+	public void getDetails()
+	{
+		
+	}
+}
+
+Polymorphism - An object taking more that one form is called as polymorphism.
+
+a. static polymorphism - method overloading
+	Method overloading means, many methods with same name but with different arguments 
+	in the same class.The implementation in derived class will be different.
+	The argument must differ based on datatype, number of arguments, sequence of arguments 
+b. dynamic polymorphism - method overriding
+	Method overriding means, same method name with same arguments and same return type which 
+	is inherited in derived class. The implementation in derived class will be different.
+c. Object polymorphism
+	Base class variable can point to derived class object.
+	Employee emp = new Manager();
+	List l = new ArrayList();
+
+8. Java is case sensitive. 
+	class, interface, enum names in java - PascalCase - Eg: Employee, EmployeeDetails.
+	methods & attributes in java - camelCase - Eg: weight, display(), firstName, getDetails().
+	keywords in java - lowercase
+	constant in java (final) - UPPERCASE - final int AGE = 10;
+
+9. static - we can use static modifier on a variable, method and inner class.
+	we also have static block.
+
+class Test
+{
+	public static int a = 10;
+	public int b = 20;
+}
+
+Test obj = new Test();
+obj.b++;
+obj.a++;
+
+Test obj1 = new Test();
+obj1.b++;
+obj1.a++;
+
+Static members can be called with an object of a class and also they can be called without an
+object of a class.
+
+Static block is used to intialize values for static variables.
+
+10. abstract - class, method
+
+A class can extends only one abstract class. and it should have is-a relationship
+
+abstract class Employee
+{
+	public abstract void display();
+}
+class Manager extends Employee
+{
+	public void display()
+	{
+	}
+}
+
+11. Interface - A class can implement interface by using interface keyword
+
+A class can implement any number of interfaces.
+A same interface can be implemented by many classes.
+
+interface Music
+{
+	public void playMusic();
+}
+
+12. final - final modifier can be applied on top of variable, method and class.
+final variable - constant
+final method - cannot override
+final class - cannot inherit
+
+13. Constructor - Intialize Objects and intialize default values for instance variables.
+	We can overload a constructor
+	We cannot override a constructor - because constructors dont get inherited
+	public Employee()
+	{
+	}
+
+14. Exception - Ubnormal condition of your application
+
+try and catch block is used to handle exceptions.
+finally block - works on both occasions - when there is an exception and when there is no exception
+throw - used to throw explicit exception.
+throws - used to declare that the method will throw exception
+try with resource statement - try(){}
+User defined exceptions - class MyExp extends Exception
+
+15. Collections -  java.util.*
+
+Wrapper class - Boxing (primitive data type to an object) and UnBoxing (object to primitive datatype)
+List - ArrayList, LinkedList
+Set - HashSet, LinkedHashSet, TreeSet
+Map - HashMap, LinkedHashMap, TreeMap
+Deque - ArrayDeque, LinkedList
+
+How to add user defined objects inside collection
+
+Comparable and Comparator Interface to sort userdefined objectes added inside collection
+Iterators, ListIterators, Adv for loop.
+
+Scanner class can be used to read input from user @ run time.
+
+
+16. IO - java.io.*
+
+Byte Stream - read and write data as sequence of bytes is called as byte stream
+Char Stream - read and write data as sequence of char is called as char stream
+
+Read data - BufferedReader and InputStreamReader, readLine().
+
+read from console - write to console
+read from console - write to file
+read from file - write to console
+read from file - write to file
+
+If a class name ends with reader or writer - it is char stream class
+If a class name ends with stream - it is byte stream class
+
+Serialization - Save the object and its state as a byte stream into a file.
+DeSerialization - Retrieving the sequence of byte as an object from the file.
+
+17. JDBC -Saturday
+ 
+18. Threads - Saturday
+	 
+19. Enum - User defined data type for constant values.
+	Type safey of the variable is achieved.
+
+enum WeekDay
+{
+	Monday,
+	Tuesday,
+	Wednesday,
+	Thursday,
+	Friday,
+	Saturday,
+	Sunday;
+}
+
+
+WeekDay week = WeekDay.Monday;
+
+20. regex - Regular Expression - validation (Pattern Matching)
+
+Pattern, Matcher
+Compile(), Matches()
+
+
+21. String, StringBuilder, StringBuffer
+
+22. Assertions - Saturday
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
