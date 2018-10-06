@@ -166,10 +166,29 @@ If a class name ends with stream - it is byte stream class
 Serialization - Save the object and its state as a byte stream into a file.
 DeSerialization - Retrieving the sequence of byte as an object from the file.
 
-17. JDBC -Saturday
- 
-18. Threads - Saturday
-	 
+17. JDBC - Java Database Connectivity.
+		import java.sql.*;
+		Exception Handling - SQLException
+		
+		1. Add the dependencies of that database server into the application - Load the database
+		driver class into the application
+		2. Establish the database connection by passing the database URL, username and password.
+		3. Create a SQL query and create a Statement or PreparedStatement Object, based on the 
+		query and execute the Statement or PreparedStatement object.
+		4. Handle the code using try, catch - SQLExcetion
+
+		Three methods to execute the statement object - execute (Create, Alter, Drop - DDL) and (Insert, Update, Delete - DML), executeUpdate (DML), executeQuery (Select) 
+
+18. Threads - java.lang
+
+	Thread - Thread is a light weight process or subset of process.
+		Thread class is used to create an object of Thread.
+		The task for a thread will be defined inside a class which implements runnable interface and overrides run method. 
+		Assign the runnable object to the Thread object.
+		new - runnable - running - dead
+			-blocked-
+		synchronized - make threads work one after the other by placing locks.
+			 
 19. Enum - User defined data type for constant values.
 	Type safey of the variable is achieved.
 
@@ -194,45 +213,13 @@ Compile(), Matches()
 
 
 21. String, StringBuilder, StringBuffer
+	- String is Immutable (Constant)
+	- Others are mutable (not a constant)
+	- StrinBuilder is not Thread Safe as all the methods are not synchronized.
+	- StringBuffer is Thread Safe as all the methods are synchronized.
 
-22. Assertions - Saturday
+22. Assertions
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
-
-
-
-
-
-
-
-
-
-
+	- check assumptions of a developer.
+	- assertions are used Unit testing.
+	- assert(boolean):"message"; 
